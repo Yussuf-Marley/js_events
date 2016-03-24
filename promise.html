@@ -1,0 +1,58 @@
+<!--
+  **
+  * Cytonn Technologies
+  *
+  * @author: Joseph Mahugu <jmahugu@cytonn.com>
+  *
+  * Project: Events in JS
+  *
+  -->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JavaScript Events</title>
+  <script src="//cdn.jsdelivr.net/rsvp/3.0.6/rsvp.js"></script>
+</head>
+<body>
+<script>
+  //Code has been referenced from https://www.toptal.com/javascript/javascript-promises as a working example
+  function toss() {
+    var n = Math.floor(Math.random() * 6) + 1;
+    return new RSVP.resolve(n);
+  }
+
+
+  function threeDice() {
+    var tosses = [];
+    
+    function add(x, y) {
+      return x + y;
+    }
+    
+    for (var i=0; i<3; i++) { 
+      tosses.push(toss()); 
+      }
+    
+    return RSVP.all(tosses).then(function(results) { 
+      return results.reduce(add); 
+      });
+  }
+
+
+  function logResults(result) {
+    console.log("Rolled " + result + " with three dice.");
+  }
+
+  function logErrorMessage(error) {
+    console.log("Oops: " + error.message);
+  }
+
+
+  threeDice()
+    .then(logResults)
+    .then(null, logErrorMessage);
+
+
+</script>
+</body>
+</html>

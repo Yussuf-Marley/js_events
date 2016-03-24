@@ -1,0 +1,91 @@
+<!--
+  **
+  * Cytonn Technologies
+  *
+  * @author: Joseph Mahugu <jmahugu@cytonn.com>
+  *
+  * Project: Events in JS
+  *
+  -->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JavaScript Events</title>
+</head>
+<body>
+  <h4>Javascript Events</h4>
+  <p>Enter 2 numbers to get their sum:</p>
+  <p>
+    <input id="add1"> + <input id="add2">
+  </p>
+  <p id="get-sum"></p>
+
+<script>
+  var num1 = document.getElementById("add1");
+  var num2 = document.getElementById("add2");
+  var getsum = document.getElementById("get-sum");
+
+  num1.addEventListener("click", function(){
+    alert("Did you just click me?");
+  });
+
+  num1.addEventListener("mouseenter", function(){
+    alert("Am a mouse listener");
+  });
+
+  num1.addEventListener("mouseleave", function(){
+    alert("The mouse just left");
+  });
+
+  num1.addEventListener("focus", function(){
+    alert("Am focused");
+  });
+
+  num1.addEventListener("blur", function(){
+    alert("Blur listener");
+});
+
+// JavaScript Built in Events
+// -click
+// -mouseenter
+// -mouseleave
+// -mousedown
+// -mouseup
+// -mousemove
+// -keydown
+// -keyup
+// -blur
+// -focus
+ 
+
+num1.addEventListener("input",add); 
+num2.addEventListener("input",add); 
+
+  // function add(){
+  //   var one = num1.value;
+  //   var two = num2.value;
+  //   // document.getElementById("get-sum").innerHTML = one + two;
+  //   //alternatively, use the var that points to the element id
+  //   getsum.innerHTML = one + two;
+  // }
+
+  function add(){
+    var one = parseFloat(num1.value) || 0;
+    var two = parseFloat(num2.value) || 0;
+    // var sum = one + two;
+    getsum.innerHTML = "The sum is " + (one + two);
+  }
+
+
+
+
+
+ 
+
+
+
+
+
+</script>
+</body>
+</html>
